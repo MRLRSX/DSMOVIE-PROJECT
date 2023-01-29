@@ -5,10 +5,11 @@ import br.com.mrlrsx.dsmovie.dto.ScoreDTO;
 import br.com.mrlrsx.dsmovie.services.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping(value="/scores")
@@ -18,8 +19,12 @@ public class ScoreResource {
     private ScoreService service;
 
     @PutMapping
-    public MovieDTO saveScore(@RequestBody ScoreDTO dto) {
+    public ResponseEntity<MovieDTO> save(@RequestBody ScoreDTO dto){
         MovieDTO movieDTO = service.saveScore(dto);
-        return movieDTO;
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(movieDTO.getId()).toUri();
+        return ResponseEntity.created(uri).body(movieDTO);
     }
 }
+
+
