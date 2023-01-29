@@ -3,7 +3,9 @@ package br.com.mrlrsx.dsmovie.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name="tb_movie")
@@ -18,6 +20,8 @@ public class Movie implements Serializable {
     private Integer count;
     private String image;
 
+    @OneToMany(mappedBy = "id.movie")
+    private Set<Score> scores = new HashSet<>();
     public Movie(){}
 
     public Movie(Long id, String title, Double score, Integer count, String image) {
@@ -66,6 +70,10 @@ public class Movie implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Set<Score> getScores() {
+        return scores;
     }
 
     @Override

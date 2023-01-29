@@ -15,7 +15,7 @@ public class User implements Serializable {
     private Long id;
     private String email;
 
-    private User(){}
+    public User(){}
     public User(Long id, String email) {
         this.id = id;
         this.email = email;

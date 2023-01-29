@@ -18,6 +18,8 @@ public class Score implements Serializable {
 
     private Double valor;
 
+
+
     public Score() {
     }
 
