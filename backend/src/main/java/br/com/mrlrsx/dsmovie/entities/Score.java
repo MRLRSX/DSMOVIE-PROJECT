@@ -1,11 +1,14 @@
 package br.com.mrlrsx.dsmovie.entities;
 
 import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@Entity
+@Table(name="tb_score")
 public class Score implements Serializable {
     private static final long serialVersionUID = 1L;
 
