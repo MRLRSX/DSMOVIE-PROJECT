@@ -1,18 +1,18 @@
 package br.com.mrlrsx.dsmovie.entities;
 
 import jakarta.persistence.Embeddable;
+
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
 import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
 public class ScorePK implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @ManyToOne
-    @JoinColumn(name="movie_id")
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     @ManyToOne
@@ -20,7 +20,6 @@ public class ScorePK implements Serializable {
     private User user;
 
     public ScorePK() {
-
     }
 
     public Movie getMovie() {
@@ -37,5 +36,17 @@ public class ScorePK implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ScorePK scorePK)) return false;
+        return Objects.equals(movie, scorePK.movie) && Objects.equals(user, scorePK.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(movie, user);
     }
 }
