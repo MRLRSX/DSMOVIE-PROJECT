@@ -2,8 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import MovieCard from "components/MovieCard";
 import Pagination from "components/Pagination";
-import { BASE_URL } from "../../utils/request";
-import { MoviePage } from "../../types/movies";
+import { BASE_URL } from "utils/request";
+import { MoviePage } from "types/movies";
 
 function Listing() {
 

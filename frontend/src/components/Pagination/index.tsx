@@ -1,5 +1,5 @@
-import { ReactComponent as Arrow } from '../../assests/img/arrow.svg';
-import { MoviePage } from '../../types/movies';
+import { ReactComponent as Arrow } from 'assests/img/arrow.svg';
+import { MoviePage } from 'types/movies';
 import './styles.css';
 
 type Props = {
