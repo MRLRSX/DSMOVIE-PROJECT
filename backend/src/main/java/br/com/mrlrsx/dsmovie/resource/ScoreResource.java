@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/scor")
+@RequestMapping("/scores")
 public class ScoreResource {
 
     @Autowired
     private ScoreService service;
 
-    @PutMapping
-    public ResponseEntity<MovieDTO> save(@RequestBody ScoreDTO dto){
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieDTO> save(@PathVariable(value = "1") Long id, @RequestBody ScoreDTO dto){
         MovieDTO movieDTO = service.saveScore(dto);;
         return ResponseEntity.ok().body(movieDTO);
     }
