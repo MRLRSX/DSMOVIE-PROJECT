@@ -18,9 +18,9 @@ public class ScoreResource {
     @Autowired
     private ScoreService service;
 
-    @PutMapping("/{id}")
-    public ResponseEntity<MovieDTO> save(@PathVariable(value = "1") Long id, @RequestBody ScoreDTO dto){
-        MovieDTO movieDTO = service.saveScore(dto);;
+    @PutMapping
+    public ResponseEntity<MovieDTO> save(@RequestBody ScoreDTO dto){
+        MovieDTO movieDTO = service.saveScore(dto);
         return ResponseEntity.ok().body(movieDTO);
     }
 }
